@@ -14,7 +14,7 @@
 
 <body>
   <!-- todolist -->
-  <h1>To Do List</h1>
+  <h1>DAILY PLANNER</h1>
 
   <!-- login -->
   <!-- <form class="hidden" id="login-form">
@@ -23,25 +23,31 @@
     <input type="submit" value="login" />
   </form> -->
 
-  <!-- list_input -->
-  <div class="container">
-    <input id="inputField" placeholder="할 일을 입력해주세요." type="text" autofocus>
-    <button id="addButton"> + </button>
-  </div>
-  
   <!-- lists -->
   <div class="todoList">
-    
-    <div class="todos">
-      <span class="sub_title" id="todo_num">To Do : 0</span>
-      <ul class="lists" id="todo_lists"></ul>
-    </div>
+    <div class="first">
 
-    <div class="dones">
-      <span class="sub_title" id="done_num">Done : 0</span>
-      <ul class="lists" id="done_lists"></ul>
+      <div class="container">  <!-- list_input -->
+        <input id="inputField" placeholder="할 일을 입력해주세요." type="text" autofocus>
+        <button id="addButton"> + </button>
+      </div>
+
+      <div class="todos">
+        <span class="sub_title" id="todo_num">To Do : 0</span>
+        <ul class="lists" id="todo_lists"></ul>
+      </div>
     </div>
-  
+    
+    <div class="second">
+      <div class="daily">
+        <span id="date">0000-00-00</span>
+      </div>
+
+      <div class="dones">
+        <span class="sub_title" id="done_num">Done : 0</span>
+        <ul class="lists" id="done_lists"></ul>
+      </div>
+    </div>
   </div>
   
   <!-- clock -->
@@ -49,6 +55,7 @@
 
   <script src="src/todo.js"></script>
   <script src = "src/clock.js"></script>
+  <script src = "src/date.js"></script>
 
 </body>
 
