@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vanilla Todo</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="src/style.css" />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -13,18 +13,15 @@
 </head>
 
 <body>
-  <!-- clock -->
-  <h1 id="clock">00:00:00</h1>
-
-  <!-- login -->
-  <form class="hidden" id="login-form">
-    <input required maxlength="10" type="text" placeholder="name" />
-    <input required maxlength="10" type="text" placeholder="비밀번호" />
-    <input type="submit" value="login" />
-  </form>
-
   <!-- todolist -->
   <h1>To Do List</h1>
+
+  <!-- login -->
+  <!-- <form class="hidden" id="login-form">
+    <input required maxlength="10" type="text" placeholder="name" />
+    <input required maxlength="10" type="text" placeholder="password" />
+    <input type="submit" value="login" />
+  </form> -->
 
   <!-- list_input -->
   <div class="container">
@@ -37,28 +34,22 @@
     
     <div class="todos">
       <span class="sub_title" id="todo_num">To Do : 0</span>
-      <ul id="todo_lists">
-       <!-- <div class="todo-list">
-        <i class="todo-check fa-solid fa-check"></i>
-        new todo
-        <i class="todo-delete fa-solid fa-trash"></i> -->
-      </div>
-    </ul>
-  </div>
+      <ul class="lists" id="todo_lists"></ul>
+    </div>
 
     <div class="dones">
       <span class="sub_title" id="done_num">Done : 0</span>
-      <ul id="done_lists">
-        <!-- <i class="todo-check fa-solid fa-check"></i>
-        <i class="todo-delete fa-solid fa-trash"></i> -->
-      </ul>
+      <ul class="lists" id="done_lists"></ul>
     </div>
-
+  
   </div>
+  
+  <!-- clock -->
+  <span id="clock">00:00:00</span>
 
   <script src="src/todo.js"></script>
   <script src = "src/clock.js"></script>
-  
+
 </body>
 
 </html>

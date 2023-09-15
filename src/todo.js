@@ -21,8 +21,8 @@ window.onload = () => {
 const createTodo = todoInput => {
   let newlist = document.createElement('div'); //버튼 누르면 div 추가
   let todoText = document.createTextNode(todoInput);
-  let checkIcon = document.createElement('i'); // check icon
-  let deleteIcon = document.createElement('i'); // delete icon
+  let checkIcon = document.createElement('span'); // check icon
+  let deleteIcon = document.createElement('span'); // delete icon
 
   checkIcon.classList.add('todo-check', 'fa-solid', 'fa-check');
   deleteIcon.classList.add('todo-delete', 'fa-solid', 'fa-trash');
@@ -45,20 +45,41 @@ const addTodo = todolist => {
     todolist.appendChild(createTodo(inputForm.value)); //todoList에 추가
     console.log('입력');
     inputForm.value = ''; // 할 일 입력창 초기화
+    countTodo();
   }
 };
 
 const deleteTodo = elem => {
   elem.parentNode.parentNode.removeChild(elem.parentNode);
   // 인자로 받아진 노드의 부모의 부모노드로 거슬러올라가 todolist 삭제
+  countTodo();
+  countDone();
 };
 
 const moveList = todolist => {
   if (todolist.parentNode === toDoList) {
     doneList.appendChild(todolist);
     todolist.style.textDecoration = 'line-through';
+    countTodo(); //리스트 개수를 다시 세고 숫자 바꿔줌
+    countDone();
   } else if (todolist.parentNode === doneList) {
     toDoList.appendChild(todolist);
     todolist.style.textDecoration = 'none';
+    countTodo();
+    countDone();
   }
+};
+
+const countTodo = () => {
+  const todoLength = document.querySelectorAll('ul#todo_lists .todo-list');
+  const todoNum = document.querySelector('span#todo_num');
+
+  todoNum.textContent = `To Do : ${todoLength.length}`;
+};
+
+const countDone = () => {
+  const doneLength = document.querySelectorAll('ul#done_lists .todo-list');
+  const doneNum = document.querySelector('span#done_num');
+
+  doneNum.textContent = `Done : ${doneLength.length}`;
 };
