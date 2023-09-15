@@ -49,7 +49,7 @@ const addTodo = todolist => {
   else {
     todolist.appendChild(createTodo(inputForm.value)); //todoList에 추가
     console.log('입력');
-    saveTodos();
+    saveTodos(); //local strage에 저장
     inputForm.value = ''; // 할 일 입력창 초기화
     countTodo();
   }
@@ -98,19 +98,23 @@ const saveTodos = () => {
   const todoLists = Array.from(document.querySelectorAll('ul#todo_lists .todo-list')).map(list => list.textContent);
   const doneLists = Array.from(document.querySelectorAll('ul#done_lists .todo-list')).map(list => list.textContent);
 
+  //문자열로 변환 후 local storage에 저장
   localStorage.setItem('todoLists', JSON.stringify(todoLists));
   localStorage.setItem('doneLists', JSON.stringify(doneLists));
 };
 
 const loadTodos = () => {
-  const loadedTodoLists = JSON.parse(localStorage.getItem('todoLists')) || [];
-  const loadedDoneLists = JSON.parse(localStorage.getItem('doneLists')) || [];
+  //저장한 todolists, donelists 가져옴
+  const savedTodoLists = JSON.parse(localStorage.getItem('todoLists')) || [];
+  const savedDoneLists = JSON.parse(localStorage.getItem('doneLists')) || [];
 
-  loadedTodoLists.forEach(todo => {
+  //todo에 있는 것들은 바로 appendChild
+  savedTodoLists.forEach(todo => {
     toDoList.appendChild(createTodo(todo));
   });
 
-  loadedDoneLists.forEach(done => {
+  //doneList에 있는 것들은 선을 그어서 다시 로드해야하기 때문에 줄 긋고 appendChild
+  savedDoneLists.forEach(done => {
     let listItem = createTodo(done);
     listItem.style.textDecoration = 'line-through';
     doneList.appendChild(listItem);
